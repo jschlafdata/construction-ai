@@ -1,0 +1,39 @@
+[build-system]
+requires = ["hatchling", "uv-dynamic-versioning>=0.7.0"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+source = "uv-dynamic-versioning"
+
+[tool.uv-dynamic-versioning]
+vcs = "git"
+style = "pep440"
+bump = true
+
+[project]
+name = "construction-ai"
+dynamic = ["version"]
+description = "Modules and helpers for generating construction plans and AI helpers."
+authors = [
+        { name = "John Schlafly", email = "john@schlafdata.com" },
+]
+readme = "README.md"
+requires-python = ">=3.11,<4.0"
+dependencies = [
+    "pydantic-ai==0.8.1",
+    "pydantic==2.12.0",
+    "pydantic-graph==0.8.1",
+    "langfuse==3.3.4",
+    "logfire[httpx]>=3.14.1",
+    "pyarrow==21.0.0"
+]
+
+[project.urls]
+Source = "https://github.com/jschlafdata/construction-ai"
+Homepage = "https://github.com/jschlafdata/construction-ai"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["construction_ai"]
